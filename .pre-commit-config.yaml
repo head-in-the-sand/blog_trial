@@ -1,5 +1,5 @@
 # See https://pre-commit.com for more information
-# See httpshtml://pre-commit.com/hooks. for more hooks
+# See https://pre-commit.com/hooks. for more hooks
 default_install_hook_types: [pre-commit, commit-msg]
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -18,7 +18,7 @@ repos:
   hooks:
   - id: conventional-pre-commit
     stages: [commit-msg]
-    args: []
+    args: [commit_msg.txt]
 - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
   rev: v2.13.0
   hooks:
@@ -32,3 +32,8 @@ repos:
     stages: [pre-commit]
   - id: check-github-workflows
     stages: [pre-commit]
+- repo: https://github.com/Lucas-C/pre-commit-hooks
+  rev: v1.5.5
+  hooks:
+  - id: remove-tabs
+    args: [--whitespaces-count, '2']
