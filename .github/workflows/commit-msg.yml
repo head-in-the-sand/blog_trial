@@ -25,7 +25,7 @@ jobs:
         key: pre-commit-3|${{ env.pythonLocation }}|${{ hashFiles('.pre-commit-config.yaml') }}
     - run: |
         pre-commit install --install-hooks -t commit-msg
-        for commit in $(git rev-list ${{ github.base_ref }}..${{ github.head_ref }}); do
+        for commit in $(git rev-list main..HEAD); do
             git log -1 --format=%s $commit >| commit_msg.txt
             pre-commit run --hook-stage commit-msg --commit-msg-filename commit_msg.txt
         done
